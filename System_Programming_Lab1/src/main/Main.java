@@ -9,8 +9,7 @@ public class Main {
     private static String[] splitWords(String text) {
         if (text == null) return null;
 
-        //Pattern p1 = Pattern.compile("(\\W+)");
-        Pattern p1 = Pattern.compile("[^a-zA-Z0-9']");
+        Pattern p1 = Pattern.compile("[^a-zA-Z']");
 
         String[] res = p1.split(text);
 
@@ -59,14 +58,15 @@ public class Main {
         for (Map.Entry<String, Integer> en : map.entrySet()) {
             double vowel_part_value = (double) en.getValue();
             System.out.println("Word = " + en.getKey() +
-                    ", Vowel part (10^-3) = " + vowel_part_value/1000 + "%");
+                    ", Vowel part = " + vowel_part_value/1000 + "%");
         }
     }
 
     public static void main(String[] args)throws IOException {
+        //"C:\Windows\System32\LogFiles\setupcln\setupact.log"
         System.out.println("Enter the path: ");
         Scanner scn = new Scanner(System.in);
-        String file_path = scn.next();
+        String file_path = scn.next().trim();
         Path fileName = Path.of(file_path);
         String str = Files.readString(fileName);
         String[] unique_words = splitWords(str);
