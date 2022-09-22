@@ -64,7 +64,10 @@ public class Main {
     }
 
     public static void main(String[] args)throws IOException {
-        Path fileName = Path.of("src/main/resources/test.txt");
+        System.out.println("Enter the path: ");
+        Scanner scn = new Scanner(System.in);
+        String file_path = scn.next();
+        Path fileName = Path.of(file_path);
         String str = Files.readString(fileName);
         String[] unique_words = splitWords(str);
 
